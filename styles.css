@@ -1,0 +1,398 @@
+/* ==========================================
+   1. ESTILOS GENERALES Y BASE
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #f5f7fa;
+    color: #222;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Playfair Display", serif;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 0;
+}
+
+/* ==========================================
+   2. MENÚ FLOTANTE Y BOTÓN DE TEMA
+   ========================================== */
+header {
+    position: fixed;         /* Flota sobre las secciones */
+    top: 20px;               /* Despegado del borde superior */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado matemático perfecto */
+    z-index: 1000;
+    width: auto;
+    display: flex;
+    flex-direction: column;  /* Ubica la barra arriba y el botón abajo */
+    align-items: flex-start; /* Alinea el botón a la izquierda debajo de la píldora */
+    pointer-events: none;    /* Permite hacer clic a través del header vacío */
+}
+
+nav, #toggle-tema {
+    pointer-events: auto;    /* Reactiva los clics solo en la barra y en el botón */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: #1f2937;
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f59e0b;
+}
+
+#toggle-tema {
+    border: none;
+    background: #1f2937;      /* Fondo oscuro para que combine con la píldora */
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    margin-top: 8px;          /* Separación respecto a la barra superior */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#toggle-tema:hover {
+    background: #374151;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   3. HERO SECTION (INICIO)
+   ========================================== */
+#hero {
+    width: 100%;
+    max-width: none;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 10%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+}
+
+#hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    background: #f59e0b;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-cta:hover {
+    transform: translateY(-5px);
+    background: #d97706;
+}
+
+/* Estilos para el Efecto Máquina de Escribir (Bonus) */
+#maquina-escribir {
+    font-weight: 600;
+    color: #f59e0b;
+}
+
+.cursor-parpadeo {
+    font-weight: 600;
+    animation: parpadeo 0.7s infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ==========================================
+   4. SECCIÓN SOBRE MÍ
+   ========================================== */
+.sobre-contenido {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.sobre-contenido img {
+    width: 35%;
+    max-width: 350px;
+    border-radius: 50%;
+}
+
+.sobre-contenido div {
+    flex: 1;
+}
+
+.sobre-contenido p {
+    margin-bottom: 1rem;
+}
+
+/* ==========================================
+   5. SECCIÓN PROYECTOS (CSS GRID APLICADO)
+   ========================================== */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-proyecto {
+    background: white;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tarjeta-proyecto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-proyecto img {
+    width: 100%;
+    display: block;
+}
+
+.tarjeta-proyecto h3 {
+    font-size: 1.4rem;
+    padding: 1rem 1rem 0.5rem;
+}
+
+.tarjeta-proyecto p {
+    padding: 0 1rem 1.5rem;
+}
+
+/* ==========================================
+   6. SECCIÓN HABILIDADES (BADGES)
+   ========================================== */
+.habilidades-lista {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.habilidad {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    border-radius: 2rem;
+    color: white;
+    font-weight: 600;
+}
+
+.html { background: #e34c26; }
+.css { background: #264de4; }
+.javascript { background: #d4a800; }
+.flexbox { background: #7c3aed; }
+.responsive { background: #059669; }
+
+/* ==========================================
+   7. SECCIÓN CONTACTO Y FORMULARIO
+   ========================================== */
+#contacto {
+    max-width: 700px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.error {
+    min-height: 1.4rem;
+    margin-top: 0.3rem;
+    color: #dc2626;
+    font-size: 0.9rem;
+}
+
+.btn-enviar {
+    padding: 0.9rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #2563eb;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   8. FOOTER Y REDES SOCIALES
+   ========================================== */
+footer {
+    padding: 2rem;
+    background: #1f2937;
+    color: white;
+    text-align: center;
+}
+
+.redes {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.redes a {
+    color: white;
+    text-decoration: none;
+}
+
+.redes a:hover {
+    color: #f59e0b;
+}
+
+/* ==========================================
+   9. MODOS OSCUROS COMPLEMENTARIOS
+   ========================================== */
+body.dark-mode {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tarjeta-proyecto {
+    background: #16213e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .campo input,
+body.dark-mode .campo textarea {
+    background: #16213e;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+/* ==========================================
+   10. RESPONSIVIDAD (MEDIA QUERIES)
+   ========================================== */
+@media (max-width: 768px) {
+    header {
+        top: 15px;
+    }
+
+    nav {
+        padding: 0.5rem 1.2rem;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.9rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .sobre-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-contenido img {
+        width: 50%;
+    }
+}
